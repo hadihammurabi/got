@@ -1,9 +1,9 @@
 package got
 
-func Ok[T any](data T) Result[T] {
-	return Result[T]{data: data}
+func Ok(data interface{}) Result {
+	return Result{data: data}
 }
 
-func Err(err error) Result[interface{}] {
-	return Result[interface{}]{err: err}
+func Err(err error) Result {
+	return Result{err: err}
 }

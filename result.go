@@ -1,14 +1,18 @@
 package got
 
-type Result[T any] struct {
-	data T
+type Result struct {
+	data interface{}
 	err  error
 }
 
-func (r Result[T]) Data() T {
+func (r Result) Data() interface{} {
 	return r.data
 }
 
-func (r Result[T]) Err() error {
+func (r Result) HasErr() bool {
+	return r.err != nil
+}
+
+func (r Result) Err() error {
 	return r.err
 }

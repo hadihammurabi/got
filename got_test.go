@@ -1,7 +1,6 @@
 package got
 
 import (
-	"errors"
 	"testing"
 
 	"github.com/golang-must/must"
@@ -31,7 +30,7 @@ func TestErr(t *testing.T) {
 	t.Run("error present", func(t *testing.T) {
 		must := must.New(t)
 
-		result := Err(errors.New("don't cry :)"))
+		result := Err("don't cry :)")
 		must.Nil(result.data)
 		must.NotNil(result.err)
 	})
@@ -41,7 +40,7 @@ func FuzzErr(f *testing.F) {
 	f.Add("abcde")
 	f.Fuzz(func(t *testing.T, err string) {
 		must := must.New(t)
-		result := Err(errors.New(err))
+		result := Err(err)
 
 		must.Nil(result.data)
 		must.NotNil(result.err)
